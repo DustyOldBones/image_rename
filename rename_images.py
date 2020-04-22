@@ -4,54 +4,6 @@ import exifread
 directory = 'IMAGE DIRECTORY HERE'
 extension = '.ext'
 
-def get_formatted_month(date_in):
-
-    month = str
-
-    if date_in[5:7] == "01":
-        month = "JAN"
-    elif date_in[5:7] == "02":
-        month = "FEB"
-    elif date_in[5:7] == "03":
-        month = "MAR"
-    elif date_in[5:7] == "04":
-        month = "APR"
-    elif date_in[5:7] == "05":
-        month = "MAY"
-    elif date_in[5:7] == "06":
-        month = "JUN"
-    elif date_in[5:7] == "07":
-        month = "JUL"
-    elif date_in[5:7] == "08":
-        month = "AUG"
-    elif date_in[5:7] == "09":
-        month = "SEP"
-    elif date_in[5:7] == "10":
-        month = "OCT"
-    elif date_in[5:7] == "11":
-        month = "NOV"
-    elif date_in[5:7] == "12":
-        month = "DEC"
-    
-    return month
-
-def get_year(date_in):
-    return date_in[0:4]
-
-def get_day(date_in):
-    return date_in[8:10]
-
-def get_formatted_time(time_in):
-    hour_int = int(time_in[0:2])
-
-    if hour_int < 12:
-        return time_in + " AM"
-    elif hour_int == 12:
-        return time_in + " AM"
-    elif hour_int > 12:
-        return str(hour_int-12) + time_in[2:8] + " PM"
-
-
 os.chdir(directory)
 
 dupe_counter = 0
@@ -67,7 +19,6 @@ for file in os.listdir(directory):
         date = str(exifdata['EXIF DateTimeOriginal'])[0:10]
         year = date[0:4]
         month_number = date[5:7]
-        month_abbrev = get_formatted_month(date)
         day = date[8:10]
 
         time = str(exifdata['EXIF DateTimeOriginal'])[11:19]
