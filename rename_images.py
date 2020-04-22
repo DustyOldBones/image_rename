@@ -1,6 +1,9 @@
 import os
 import exifread
 
+directory = 'IMAGE DIRECTORY HERE'
+extension = '.ext'
+
 def get_formatted_month(date_in):
 
     month = str
@@ -48,8 +51,7 @@ def get_formatted_time(time_in):
     elif hour_int > 12:
         return str(hour_int-12) + time_in[2:8] + " PM"
 
-directory = 'C:/Users/M/source/vscode/image_renaming_script/'
-extension = '.jpg'
+
 os.chdir(directory)
 
 dupe_counter = 0
