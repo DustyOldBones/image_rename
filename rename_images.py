@@ -1,6 +1,10 @@
 import os
 import exifread
 
+# include trailing slash for directory.
+# windows directories are easiest to read with forward slashes.
+# like: 'C:/folder/subfolder/'
+
 directory = 'IMAGE DIRECTORY HERE'
 extension = '.ext'
 
