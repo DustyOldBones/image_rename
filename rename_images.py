@@ -20,7 +20,13 @@ for file in os.listdir(directory):
         exifdata = exifread.process_file(img,details=False)
         # format is YYYY:MM:DD HH:MM:SS - indexes 0:18
         #           0123456789 01234567 - split up as below
-        date = str(exifdata['EXIF DateTimeOriginal'])[0:10]
+        # needs to handle if rogue pictures don't have any exif data.  Marks as having no exif and tacks on the original file name.
+        try:
+            date = str(exifdata['EXIF DateTimeOriginal'])[0:10]
+        except:
+            img.close()
+            os.rename(file,"NO_EXIF_DATE__"+file)
+            continue
         year = date[0:4]
         month_number = date[5:7]
         day = date[8:10]
